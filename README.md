@@ -1,7 +1,5 @@
-# <div align="center">GitHint</div>
-
 <div align="center">
-<strong>100% Free, Local Git Commit Message Suggestions — No AI Required</strong>
+<img src="./githint-logo.png" alt="GitHint" width="140" />
 </div>
 
 <br />
