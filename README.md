@@ -1,5 +1,5 @@
 <div align="center">
-<img src="./githint-logo.png" alt="GitHint" width="140" />
+<img src="./githint-logo.png" alt="GitHint" width="220" />
 </div>
 
 <br />
