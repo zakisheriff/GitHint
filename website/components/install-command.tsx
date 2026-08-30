@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { Check, Copy } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 
@@ -17,7 +16,7 @@ export function InstallCommand() {
   }
 
   return (
-    <div className="mx-auto mt-6 flex max-w-xl items-center gap-3 rounded-lg border border-border bg-white p-2 pl-4 text-left">
+    <div className="mx-auto flex max-w-xl items-center gap-3 rounded-lg border border-border bg-white p-2 pl-4 text-left">
       <span className="font-mono text-sm text-muted-foreground">$</span>
       <code className="min-w-0 flex-1 overflow-x-auto whitespace-nowrap font-mono text-sm text-foreground">
         {command}
@@ -28,15 +27,7 @@ export function InstallCommand() {
         aria-label="Copy installation command"
         className="h-9 border border-border bg-white px-3 text-foreground hover:border-foreground hover:bg-white"
       >
-        {copied ? (
-          <>
-            <Check className="size-4" /> Copied
-          </>
-        ) : (
-          <>
-            <Copy className="size-4" /> Copy
-          </>
-        )}
+        {copied ? 'Copied' : 'Copy'}
       </Button>
     </div>
   );
