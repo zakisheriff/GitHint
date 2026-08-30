@@ -53,6 +53,10 @@ export interface ChangeAnalysis {
   confidence: number;
   unrelatedChanges: boolean;
   stats: DiffStats;
+  /** The highest-tier files, i.e. the ones the analyzer read intent from. */
+  intentFiles: ChangedFile[];
+  /** True when intent was read from source code rather than docs, tests or packaging. */
+  sourceDriven: boolean;
 }
 
 export interface CommitCandidate {

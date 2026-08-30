@@ -10,7 +10,7 @@
 
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
 ![Node.js](https://img.shields.io/badge/Node.js-20+-339933?style=for-the-badge&logo=node.js&logoColor=white)
-![Vitest](https://img.shields.io/badge/Vitest-31%20Tests-6E9F18?style=for-the-badge&logo=vitest&logoColor=white)
+![Vitest](https://img.shields.io/badge/Vitest-56%20Tests-6E9F18?style=for-the-badge&logo=vitest&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 
 <br />
@@ -68,17 +68,52 @@ Developers regularly pause at `git commit -m ""` and waste time turning code cha
 
 ## 🧠 Deterministic Local Intelligence
 
-- **Weighted Classification Engine**  
-  Scores documentation, style, tests, build files, CI, features, fixes, refactors, and performance signals.
+- **Role-Aware Classification**  
+  Files are read by the role they play, and only the ones carrying intent get a vote. A bug fix
+  arrives with its regression test and a feature arrives with a lockfile bump — neither the test
+  nor the lockfile is allowed to outrank the source change it shipped with.
 
-- **Identifier Extraction**  
-  Recognizes functions, classes, components, interfaces, types, and common patterns across several languages.
+- **Shape Analysis**  
+  New files and new exports read as features, edits to existing code read as fixes, and churn that
+  adds and removes in equal measure without changing the public surface reads as a refactor.
 
-- **Meaningful Description Generation**  
-  Converts names such as `MobileMenu` and `handleUserLogin` into concise natural-language subjects.
+- **Convention Learning**  
+  The same dependency bump is filed as `build:` in Angular, `chore:` in NestJS and `fix:` under
+  Renovate's defaults. No diff can settle that, so GitHint reads your own `git log` and follows the
+  convention already in use.
+
+- **Ranked Identifier Extraction**  
+  Recognizes functions, classes, components, interfaces and types across several languages, then
+  ranks them so the subject names the headline symbol rather than the first helper that matched.
 
 - **Deterministic Alternatives**  
-  Regeneration cycles through ranked candidates from the same analysis instead of making network requests.
+  `r` cycles through ranked candidates that span commit _types_, not just wordings — all from the
+  same local analysis, with no network requests.
+
+---
+
+## 📊 Measured Accuracy
+
+Commit type is a statement about intent, and a diff records what changed rather than why. GitHint is
+measured rather than asserted: each commit from real repositories is replayed by staging its diff and
+comparing the suggestion against what the author actually wrote.
+
+| Corpus   | Repositories                    | Commits | Correct type | Correct type offered |
+| -------- | ------------------------------- | ------- | ------------ | -------------------- |
+| Tuning   | commitlint, vite, cz-cli        | 348     | **72.1%**    | **81.3%**            |
+| Held-out | angular, nest, semantic-release | 255     | **60.4%**    | **76.5%**            |
+
+The held-out repositories were never used while tuning; accuracy there rose from 40.8% to 60.4%,
+which is the honest measure of how well the heuristics generalize. "Correct type offered" is how
+often the right type is among the alternatives `r` cycles through.
+
+Deterministic categories are reliable — documentation scores 94%, packaging chores 82%. The
+irreducible cases are `feat` / `fix` / `refactor`, which can edit identical lines with different
+intent; GitHint flags those as ambiguous rather than bluffing, and puts the alternatives one
+keystroke away.
+
+**GitHint drafts the message; you approve it.** That is the intended workflow, and `e` edits any
+suggestion before it is committed.
 
 ---
 
@@ -214,7 +249,7 @@ Visit **http://localhost:3000** 🎉
 ✅ **Deterministic Alternatives** — Cycle through meaningful candidates  
 ✅ **Clipboard Support** — Copy through native platform tools  
 ✅ **Optional Commit and Push** — Perform only the actions you explicitly request  
-✅ **Unrelated Change Warning** — Know when staged work should become separate commits  
+✅ **Unrelated Change Warning** — Know when staged work should become separate commits
 
 ### Automation and Configuration
 
@@ -223,7 +258,7 @@ Visit **http://localhost:3000** 🎉
 ✅ **Inferred Scopes** — Add repository-aware scopes with `--scope`  
 ✅ **Cross-Platform Config** — Store preferences in the appropriate user config directory  
 ✅ **Length Limits** — Keep suggestions within a configurable maximum  
-✅ **Repository Style Detection** — Learn scoped commit style from recent local history  
+✅ **Repository Style Detection** — Learn scoped commit style from recent local history
 
 ---
 
@@ -278,7 +313,7 @@ GitHint combines several signal groups:
 ✅ **Safe Process Execution** — Git receives explicit argument arrays  
 ✅ **Binary Diff Handling** — Binary content is ignored while filenames remain useful  
 ✅ **Large Diff Sampling** — Oversized staged diffs are safely bounded  
-✅ **Explicit Network Action** — Only user-requested `git push` can access the network  
+✅ **Explicit Network Action** — Only user-requested `git push` can access the network
 
 ---
 

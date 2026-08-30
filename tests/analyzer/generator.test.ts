@@ -59,3 +59,23 @@ describe('generateCandidates', () => {
     expect(message.length).toBeLessThanOrEqual(50);
   });
 });
+
+describe('alternatives', () => {
+  it('offers runner-up commit types so an ambiguous call is one keystroke away', () => {
+    const analysis = analyze(['src/auth/session.ts'], '+  if (!token) return null;');
+    const types = new Set(generateCandidates(analysis).map((candidate) => candidate.type));
+    expect(types.size).toBeGreaterThan(1);
+  });
+
+  it('keeps the primary type first', () => {
+    const analysis = analyze(['src/auth/session.ts'], '+  if (!token) return null;');
+    const candidates = generateCandidates(analysis);
+    expect(candidates[0]?.type).toBe(analysis.primaryCategory);
+  });
+
+  it('offers only the forced type when one is given', () => {
+    const analysis = analyze(['src/auth/session.ts'], '+  if (!token) return null;');
+    const types = new Set(generateCandidates(analysis, { type: 'perf' }).map((c) => c.type));
+    expect([...types]).toEqual(['perf']);
+  });
+});

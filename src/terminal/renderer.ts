@@ -19,6 +19,12 @@ export function renderSuggestion(
     );
   }
   process.stdout.write(`${chalk.dim('Suggested')}\n\n  ${chalk.bold(message)}\n\n`);
+  // The diff cannot always separate a fix from a refactor. Say so instead of bluffing.
+  if (analysis.confidence < 0.6) {
+    process.stdout.write(
+      `${chalk.dim('~')} ${chalk.dim('Ambiguous change — press r to cycle commit types.')}\n\n`,
+    );
+  }
   if (analysis.unrelatedChanges) {
     process.stdout.write(
       `${chalk.yellow('!')} Multiple unrelated change groups detected. Consider separate commits.\n\n`,

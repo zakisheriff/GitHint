@@ -43,7 +43,7 @@ export function generateDescriptions(type: CommitType, analysis: ChangeAnalysis)
 
   const verbs: Record<CommitType, string[]> = {
     feat: allAdded ? ['add', 'introduce', 'implement'] : ['add', 'improve', 'update'],
-    fix: ['prevent', 'handle', 'correct', 'resolve'],
+    fix: ['correct', 'handle', 'resolve', 'prevent'],
     refactor: analysis.files.some((file) => file.status === 'renamed')
       ? ['reorganize', 'rename', 'move']
       : ['simplify', 'extract', 'reorganize'],

@@ -27,7 +27,7 @@ export class GitRepository {
       this.git(['diff', '--cached', '--numstat']),
       this.git(['diff', '--cached', '--no-ext-diff', '--binary']),
       this.git(['branch', '--show-current']),
-      this.git(['log', '-10', '--pretty=format:%s']),
+      this.git(['log', '-300', '--pretty=format:%s']),
     ]);
     const sampled = sampleDiff(diff.stdout);
     return {

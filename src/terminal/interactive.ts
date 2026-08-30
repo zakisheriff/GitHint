@@ -36,10 +36,14 @@ function readAction(): Promise<Action> {
   });
 }
 
-function renderActions(message?: string): void {
-  const suggestion = message ? `Suggested\n\n  ${chalk.bold(message)}\n\n` : '';
+function renderActions(current: CommitCandidate, index: number, total: number): void {
+  const heading =
+    index === 0
+      ? ''
+      : `${chalk.dim(`Alternative ${index} of ${total - 1}`)}\n\n  ${chalk.bold(current.message)}\n\n`;
+  const alternative = total > 1 ? `r      alternative (${total - 1} more)` : 'r      alternative';
   process.stdout.write(
-    `${suggestion}Enter  commit\ne      edit\nr      alternative\nc      copy\nq      cancel\n`,
+    `${heading}Enter  commit\ne      edit\n${alternative}\nc      copy\nq      cancel\n`,
   );
 }
 
@@ -48,7 +52,7 @@ export async function chooseCommit(candidates: CommitCandidate[]): Promise<Inter
   while (true) {
     const current = candidates[index % candidates.length];
     if (!current) return { action: 'cancel' };
-    renderActions(index === 0 ? undefined : current.message);
+    renderActions(current, index % candidates.length, candidates.length);
     const action = await readAction();
 
     if (action === 'commit') return { action: 'commit', message: current.message };
