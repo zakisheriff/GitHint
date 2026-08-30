@@ -1,5 +1,7 @@
-import { InstallCommand } from '@/components/install-command';
 import Image from 'next/image';
+
+import { FaqAccordion } from '@/components/faq-accordion';
+import { InstallCommand } from '@/components/install-command';
 
 const steps = [
   {
@@ -22,7 +24,7 @@ const steps = [
   },
 ];
 
-export const faq = [
+const faq = [
   {
     question: 'What is GitHint?',
     answer:
@@ -232,18 +234,7 @@ export default function Home() {
           <h2 className="text-3xl font-semibold tracking-[-0.04em] sm:text-5xl">
             Questions
           </h2>
-          <div className="mt-12">
-            {faq.map((item) => (
-              <details key={item.question} className="py-5">
-                <summary className="cursor-pointer list-none text-lg font-semibold">
-                  {item.question}
-                </summary>
-                <p className="max-w-2xl pt-4 leading-7 text-muted-foreground">
-                  {item.answer}
-                </p>
-              </details>
-            ))}
-          </div>
+          <FaqAccordion items={faq} />
         </div>
       </section>
 
