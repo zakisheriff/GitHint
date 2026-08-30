@@ -150,8 +150,8 @@ export default function Home() {
         className="scroll-mt-24 px-5 pb-24 pt-20 sm:px-8 sm:pb-32 sm:pt-28"
       >
         <div className="mx-auto max-w-[1060px] text-center">
-          <h1 className="text-[clamp(4.5rem,16vw,11rem)] font-semibold leading-[0.8] tracking-[-0.08em]">
-            Commits.
+          <h1 className="text-balance text-[clamp(3.25rem,9vw,7.5rem)] font-semibold leading-[0.9] tracking-[-0.07em]">
+            Don&apos;t know what to write?
           </h1>
           <div className="mx-auto mt-14 max-w-xl">
             <InstallCommand />
