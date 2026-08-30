@@ -12,6 +12,7 @@ export interface SuggestionContext {
   analysis: ChangeAnalysis;
   candidates: CommitCandidate[];
   showStats: boolean;
+  confirmCommit: boolean;
 }
 
 export async function createSuggestion(
@@ -42,8 +43,15 @@ export async function createSuggestion(
     ...(options.type ? { type: options.type } : {}),
     includeScope: options.scope || autoScope,
     maxLength: config.maxLength,
+    conventional: config.conventional,
   });
-  return { repository, analysis, candidates, showStats: config.showStats };
+  return {
+    repository,
+    analysis,
+    candidates,
+    showStats: config.showStats,
+    confirmCommit: config.confirmCommit,
+  };
 }
 
 export async function runSuggest(options: CliOptions): Promise<void> {

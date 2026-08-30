@@ -67,4 +67,5 @@ export interface GenerateOptions {
   type?: CommitType;
   includeScope?: boolean;
   maxLength?: number;
+  conventional?: boolean;
 }

@@ -26,7 +26,10 @@ export function generateCandidates(
   const scope = options.includeScope ? analysis.likelyScope : undefined;
   return generateDescriptions(type, analysis)
     .map((description, index) => {
-      const message = formatConventionalCommit(type, description, scope, options.maxLength);
+      const message =
+        options.conventional === false
+          ? description
+          : formatConventionalCommit(type, description, scope, options.maxLength);
       const candidate: CommitCandidate = {
         type,
         description,

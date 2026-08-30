@@ -13,7 +13,7 @@ export async function runCommit(options: CliOptions): Promise<void> {
     process.stdout.write(`${message}\n`);
     return;
   }
-  if (!options.yes) {
+  if (!options.yes && context.confirmCommit) {
     renderSuggestion(message, context.analysis, context.showStats);
     const result = await chooseCommit(context.candidates);
     if (result.action === 'cancel') {

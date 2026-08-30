@@ -42,6 +42,13 @@ describe('generateCandidates', () => {
     expect(generateCandidates(analysis, { type: 'perf' })[0]?.message).toMatch(/^perf: /);
   });
 
+  it('supports non-conventional output through configuration', () => {
+    const analysis = analyze(['src/cache.ts'], '+export function cacheResult() {}');
+    expect(generateCandidates(analysis, { conventional: false })[0]?.message).toBe(
+      'add cache result',
+    );
+  });
+
   it('keeps messages within the configured length', () => {
     const message = formatConventionalCommit(
       'feat',
