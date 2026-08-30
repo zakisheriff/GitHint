@@ -4,13 +4,14 @@ import { resetUserConfig, setConfig, showConfig } from './commands/config.js';
 import { runCommit } from './commands/commit.js';
 import { runSuggest } from './commands/suggest.js';
 import { addSuggestionOptions, type CliOptions, resolveOptions } from './options.js';
+import { VERSION } from '../version.js';
 
 export function createProgram(): Command {
   const program = addSuggestionOptions(
     new Command()
-      .name('ghint')
+      .name('githint')
       .description('Generate local commit message hints from staged Git changes')
-      .version('0.1.0'),
+      .version(VERSION),
   ).action(async (_options: CliOptions, command: Command) => {
     return runCommit(resolveOptions(command));
   });

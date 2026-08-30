@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     'offline Git tool',
     'local commit message generator',
     'GitHint',
-    'ghint',
+    'githint',
     'developer CLI',
     'non-AI developer tool',
   ],

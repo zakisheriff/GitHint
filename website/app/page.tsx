@@ -14,7 +14,7 @@ const steps = [
     number: '02',
     title: 'Run GitHint',
     body: 'GitHint reads the staged diff on your machine.',
-    command: 'ghint',
+    command: 'githint',
   },
   {
     number: '03',
@@ -56,7 +56,7 @@ const softwareSchema = {
   '@context': 'https://schema.org',
   '@type': 'SoftwareApplication',
   name: 'GitHint',
-  alternateName: 'ghint',
+  alternateName: 'githint',
   applicationCategory: 'DeveloperApplication',
   operatingSystem: 'macOS, Linux, Windows',
   description:

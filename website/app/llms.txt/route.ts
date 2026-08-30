@@ -20,24 +20,24 @@ GitHint runs entirely on the developer's computer. It contains no HTTP client fo
 
 npm install -g githint
 
-The package name is githint. The executable command is ghint.
+The package and the executable command are both named githint.
 
 ## Primary usage
 
 git add .
-ghint
+githint
 
 ## Commands and options
 
-- ghint: generate a suggestion and open the interactive commit flow
-- ghint suggest: generate a suggestion without committing
-- ghint commit: explicitly use the interactive commit flow
-- ghint --plain: print only the message
-- ghint --yes: commit without interactive confirmation
-- ghint --type <type>: force a Conventional Commit type
-- ghint --scope: include an inferred scope when reliable
-- ghint --push: push after committing through the existing upstream
-- ghint config: view or update local user configuration
+- githint: generate a suggestion and open the interactive commit flow
+- githint suggest: generate a suggestion without committing
+- githint commit: explicitly use the interactive commit flow
+- githint --plain: print only the message
+- githint --yes: commit without interactive confirmation
+- githint --type <type>: force a Conventional Commit type
+- githint --scope: include an inferred scope when reliable
+- githint --push: push after committing through the existing upstream
+- githint config: view or update local user configuration
 
 ## Supported commit types
 

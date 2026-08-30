@@ -1,6 +1,6 @@
 {
   "name": "githint",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Local, deterministic Git commit message suggestions from staged changes.",
   "author": "Zaki Sheriff",
   "repository": {
@@ -13,7 +13,7 @@
   },
   "type": "module",
   "bin": {
-    "ghint": "./dist/index.js"
+    "githint": "dist/index.js"
   },
   "files": [
     "dist",

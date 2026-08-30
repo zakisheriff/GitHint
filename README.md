@@ -215,7 +215,7 @@ git add .
 ### 3. Generate a Commit Hint
 
 ```bash
-ghint
+githint
 ```
 
 ### 4. Development Setup
@@ -321,13 +321,13 @@ GitHint combines several signal groups:
 
 ### Main Commands
 
-- `ghint` — Generate a suggestion and open the interactive commit flow
-- `ghint suggest` — Generate a suggestion without committing
-- `ghint commit` — Explicitly open the interactive commit flow
-- `ghint config` — View local configuration and its path
-- `ghint config get [key]` — Read configuration
-- `ghint config set <key> <value>` — Update configuration
-- `ghint config reset` — Restore defaults
+- `githint` — Generate a suggestion and open the interactive commit flow
+- `githint suggest` — Generate a suggestion without committing
+- `githint commit` — Explicitly open the interactive commit flow
+- `githint config` — View local configuration and its path
+- `githint config get [key]` — Read configuration
+- `githint config set <key> <value>` — Update configuration
+- `githint config reset` — Restore defaults
 
 ### Options
 
