@@ -2,8 +2,6 @@
   <img src="./githint-logo.png" alt="GitHint" width="420" />
 </p>
 
-<h1 align="center">GitHint</h1>
-
 <p align="center"><strong>Stop thinking about commit messages.</strong></p>
 
 ```console
