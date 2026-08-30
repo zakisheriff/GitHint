@@ -11,6 +11,9 @@ function subjectFor(analysis: ChangeAnalysis): string {
 
 function specializedDescription(type: CommitType, analysis: ChangeAnalysis): string | undefined {
   const paths = analysis.files.map((file) => file.path.toLowerCase());
+  if (type === 'feat' && paths.some((path) => /(^|\/)cli(\/|$)/.test(path))) {
+    return analysis.addedFiles.length > 0 ? 'add cli commands' : 'update cli commands';
+  }
   if (
     type === 'chore' &&
     paths.some((path) => /(?:package-lock\.json|pnpm-lock\.yaml|yarn\.lock|bun\.lock)/.test(path))

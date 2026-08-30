@@ -8,6 +8,7 @@ const GENERIC =
 function candidateScore(description: string, analysis: ChangeAnalysis, index: number): number {
   const words = description.split(/\s+/).filter(Boolean);
   let score = analysis.confidence * 30 - index * 2;
+  if (index === 0) score += 12;
   if (words.length >= 3 && words.length <= 8) score += 12;
   if (analysis.concepts.some((concept) => description.includes(concept))) score += 10;
   if (analysis.identifiers.some((identifier) => description.includes(identifier))) score += 12;
