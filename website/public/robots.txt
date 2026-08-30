@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://githint.theatom.lk/sitemap.xml
+Host: https://githint.theatom.lk

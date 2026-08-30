@@ -1,4 +1,4 @@
-const content = `# GitHint
+# GitHint
 
 > GitHint is a free, open-source, local command-line tool that generates Conventional Commit suggestions from staged Git changes without AI, cloud services, API keys, accounts, or telemetry.
 
@@ -43,16 +43,23 @@ githint
 
 feat, fix, refactor, style, docs, test, chore, perf, build, ci, and revert.
 
+## Frequently asked questions
+
+Q: What is GitHint?
+A: GitHint is a free command-line tool that turns staged Git changes into clear Conventional Commit suggestions.
+
+Q: Does GitHint use AI?
+A: No. GitHint uses deterministic local rules. Your code never leaves your computer, and no API key is required.
+
+Q: What does GitHint inspect?
+A: It reads staged file names, paths, Git statuses, branch hints, diff patterns, and useful code identifiers.
+
+Q: Can it commit or push for me?
+A: Yes, when you ask it to. Use --yes to commit without confirmation and --push to push to the existing upstream.
+
+Q: Which systems are supported?
+A: GitHint works on macOS and Linux, and on Windows where Node.js 20 or newer and Git are available.
+
 ## Important behavior
 
 GitHint never stages files automatically. When staged changes are unrelated, it uses a broad truthful suggestion and recommends separate commits. It never silently creates a Git upstream or pushes unless the developer explicitly uses --push.
-`;
-
-export function GET() {
-  return new Response(content, {
-    headers: {
-      'Content-Type': 'text/plain; charset=utf-8',
-      'Cache-Control': 'public, max-age=3600',
-    },
-  });
-}
