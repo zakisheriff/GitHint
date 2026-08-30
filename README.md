@@ -30,6 +30,10 @@
 >
 > GitHint is not another AI wrapper. It is a fast, deterministic developer utility that turns staged Git changes into clean Conventional Commit suggestions—entirely on your machine.
 
+```bash
+npm install -g githint
+```
+
 ---
 
 ## 🌟 Vision
