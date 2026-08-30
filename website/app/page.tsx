@@ -1,5 +1,4 @@
 import {
-  ArrowRight,
   Braces,
   Check,
   ChevronRight,
@@ -16,7 +15,6 @@ import {
   ShieldCheck,
   Sparkles,
   Star,
-  TerminalSquare,
   WifiOff,
   Zap,
 } from 'lucide-react';
@@ -163,7 +161,7 @@ const faqSchema = {
 
 export default function Home() {
   return (
-    <main className="min-h-screen overflow-hidden bg-background text-foreground">
+    <main className="min-h-screen overflow-hidden bg-white text-foreground">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareSchema) }}
@@ -173,14 +171,14 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
-      <header className="sticky top-0 z-50 border-b border-border/80 bg-background/85 backdrop-blur-xl">
+      <header className="sticky top-0 z-50 border-b border-border/80 bg-white/95 backdrop-blur-xl">
         <div className="mx-auto flex h-16 max-w-[1280px] items-center justify-between px-5 sm:px-8">
           <a
             href="#top"
             className="flex items-center gap-2.5 font-semibold tracking-tight"
             aria-label="GitHint home"
           >
-            <span className="grid size-8 place-items-center rounded-full bg-foreground text-background">
+            <span className="grid size-8 place-items-center rounded-full border border-border text-foreground">
               <GitBranch className="size-4" />
             </span>
             <span className="text-lg">GitHint</span>
@@ -204,7 +202,7 @@ export default function Home() {
           </nav>
           <a
             href="https://github.com/zakisheriff/GitHint"
-            className="inline-flex h-9 items-center gap-2 rounded-md border border-border bg-card px-3 text-sm font-medium shadow-sm hover:bg-muted"
+            className="inline-flex h-9 items-center gap-2 rounded-md border border-border px-3 text-sm font-medium hover:border-foreground"
           >
             <GitFork className="size-4" />
             <span className="hidden sm:inline">View on GitHub</span>
@@ -217,22 +215,7 @@ export default function Home() {
         id="top"
         className="relative isolate border-b border-border/70 px-5 pb-20 pt-16 sm:px-8 sm:pb-28 sm:pt-24"
       >
-        <div
-          className="hero-grid absolute inset-0 -z-20 opacity-40"
-          aria-hidden="true"
-        />
-        <div
-          className="hero-glow absolute inset-x-0 top-0 -z-10 mx-auto h-[520px] max-w-5xl"
-          aria-hidden="true"
-        />
         <div className="mx-auto max-w-[1120px]">
-          <a
-            href="https://github.com/zakisheriff/GitHint"
-            className="mx-auto mb-7 flex w-fit items-center gap-2 rounded-full border border-border bg-card/90 px-3 py-1.5 text-xs font-medium shadow-sm hover:bg-muted"
-          >
-            <span className="size-1.5 rounded-full bg-[#2da44e]" /> Free and
-            open source <ArrowRight className="size-3.5" />
-          </a>
           <div className="mx-auto max-w-4xl text-center">
             <h1 className="text-balance text-[clamp(3.2rem,9vw,7.4rem)] font-semibold leading-[0.88] tracking-[-0.07em]">
               Your diff already
@@ -243,28 +226,44 @@ export default function Home() {
               GitHint turns staged changes into clean Conventional Commit
               suggestions—instantly, locally, and without AI.
             </p>
-            <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-              <a
-                href="#install"
-                className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-md bg-foreground px-6 text-sm font-semibold text-background shadow-sm hover:-translate-y-0.5 sm:w-auto"
-              >
-                Install GitHint <ArrowRight className="size-4" />
-              </a>
+            <div id="install" className="scroll-mt-24 pt-10">
+              <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">
+                Install once. Hint forever.
+              </h2>
+              <p className="mx-auto mt-3 max-w-xl text-sm leading-6 text-muted-foreground">
+                GitHint requires Node.js 20 or newer. The npm package installs
+                the <code className="font-mono text-foreground">ghint</code>{' '}
+                command globally.
+              </p>
+              <InstallCommand />
+              <div className="mt-4 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-muted-foreground">
+                <span className="flex items-center gap-2">
+                  <LockKeyhole className="size-3.5" /> MIT licensed
+                </span>
+                <span className="flex items-center gap-2">
+                  <WifiOff className="size-3.5" /> Offline-ready
+                </span>
+                <span className="flex items-center gap-2">
+                  <KeyRound className="size-3.5" /> No keys
+                </span>
+              </div>
+            </div>
+            <div className="mt-8 flex items-center justify-center">
               <a
                 href="#how-it-works"
-                className="inline-flex h-12 w-full items-center justify-center rounded-md border border-border bg-card px-6 text-sm font-semibold shadow-sm hover:bg-muted sm:w-auto"
+                className="inline-flex h-12 w-full items-center justify-center rounded-md border border-border px-6 text-sm font-semibold hover:border-foreground sm:w-auto"
               >
                 See how it works
               </a>
             </div>
           </div>
 
-          <div className="mx-auto mt-14 max-w-4xl overflow-hidden rounded-xl border border-[#30363d] bg-[#0d1117] text-[#e6edf3] shadow-[0_28px_90px_rgba(1,4,9,0.22)] sm:mt-20">
-            <div className="flex h-12 items-center justify-between border-b border-[#30363d] bg-[#161b22] px-4">
-              <div className="flex items-center gap-2 text-xs font-medium text-[#8b949e]">
+          <div className="mx-auto mt-14 max-w-4xl overflow-hidden rounded-xl border border-border bg-white text-foreground shadow-[0_24px_70px_rgba(31,35,40,0.10)] sm:mt-20">
+            <div className="flex h-12 items-center justify-between border-b border-border px-4">
+              <div className="flex items-center gap-2 text-xs font-medium text-muted-foreground">
                 <Code2 className="size-4" /> zakisheriff / GitHint
               </div>
-              <div className="flex items-center gap-3 text-xs text-[#8b949e]">
+              <div className="flex items-center gap-3 text-xs text-muted-foreground">
                 <span className="flex items-center gap-1.5">
                   <GitBranch className="size-3.5" /> main
                 </span>
@@ -274,40 +273,41 @@ export default function Home() {
               </div>
             </div>
             <div className="grid md:grid-cols-[1fr_220px]">
-              <div className="min-h-[320px] border-[#30363d] p-6 font-mono text-sm leading-7 md:border-r sm:p-8">
+              <div className="min-h-[320px] border-border p-6 font-mono text-sm leading-7 md:border-r sm:p-8">
                 <p>
-                  <span className="select-none text-[#6e7681]">$</span> git add
-                  .
+                  <span className="select-none text-muted-foreground">$</span>{' '}
+                  git add .
                 </p>
                 <p>
-                  <span className="select-none text-[#6e7681]">$</span> ghint
+                  <span className="select-none text-muted-foreground">$</span>{' '}
+                  ghint
                 </p>
-                <div className="my-6 border-l-2 border-[#2da44e] pl-5">
-                  <p className="font-sans text-xs font-semibold uppercase tracking-[0.16em] text-[#8b949e]">
+                <div className="my-6 border-l-2 border-foreground pl-5">
+                  <p className="font-sans text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">
                     Suggested commit
                   </p>
-                  <p className="mt-2 text-base font-semibold text-white sm:text-lg">
-                    <span className="text-[#3fb950]">feat:</span> add responsive
+                  <p className="mt-2 text-base font-semibold text-foreground sm:text-lg">
+                    <span className="font-bold">feat:</span> add responsive
                     navigation
                   </p>
                 </div>
-                <div className="grid max-w-xs grid-cols-[64px_1fr] gap-y-1 text-xs text-[#8b949e] sm:text-sm">
-                  <span className="text-[#e6edf3]">Enter</span>
+                <div className="grid max-w-xs grid-cols-[64px_1fr] gap-y-1 text-xs text-muted-foreground sm:text-sm">
+                  <span className="text-foreground">Enter</span>
                   <span>commit</span>
-                  <span className="text-[#e6edf3]">e</span>
+                  <span className="text-foreground">e</span>
                   <span>edit</span>
-                  <span className="text-[#e6edf3]">r</span>
+                  <span className="text-foreground">r</span>
                   <span>alternative</span>
-                  <span className="text-[#e6edf3]">q</span>
+                  <span className="text-foreground">q</span>
                   <span>cancel</span>
                 </div>
               </div>
-              <aside className="border-t border-[#30363d] p-6 md:border-t-0">
+              <aside className="border-t border-border p-6 md:border-t-0">
                 <p className="mb-4 text-xs font-semibold">Privacy checks</p>
-                <ul className="space-y-3 text-xs text-[#8b949e]">
+                <ul className="space-y-3 text-xs text-muted-foreground">
                   {privacyChecks.map((feature) => (
                     <li key={feature} className="flex items-center gap-2">
-                      <span className="grid size-5 place-items-center rounded-full bg-[#238636]/20 text-[#3fb950]">
+                      <span className="grid size-5 place-items-center rounded-full border border-border text-foreground">
                         <Check className="size-3" />
                       </span>
                       {feature}
@@ -322,7 +322,7 @@ export default function Home() {
 
       <section
         aria-label="GitHint facts"
-        className="border-b border-border bg-[#f6f8fa]"
+        className="border-b border-border bg-white"
       >
         <div className="mx-auto grid max-w-[1120px] grid-cols-2 divide-x divide-y divide-border border-x border-border sm:grid-cols-4 sm:divide-y-0">
           {stats.map(([value, label]) => (
@@ -342,7 +342,6 @@ export default function Home() {
       >
         <div className="mx-auto max-w-[1120px]">
           <SectionHeading
-            eyebrow="One command. Three steps."
             title="From staged diff to useful hint."
             body="No new workflow to learn. GitHint fits between git add and git commit."
           />
@@ -355,7 +354,7 @@ export default function Home() {
                   className={`relative p-7 sm:p-8 ${index > 0 ? 'border-t border-border md:border-l md:border-t-0' : ''}`}
                 >
                   <div className="mb-12 flex items-center justify-between">
-                    <span className="grid size-10 place-items-center rounded-md border border-border bg-muted">
+                    <span className="grid size-10 place-items-center rounded-md border border-border">
                       <Icon className="size-4" />
                     </span>
                     <span className="font-mono text-xs text-muted-foreground">
@@ -366,8 +365,8 @@ export default function Home() {
                   <p className="mt-3 min-h-16 text-sm leading-6 text-muted-foreground">
                     {step.body}
                   </p>
-                  <code className="mt-6 block overflow-x-auto rounded-md bg-[#0d1117] px-4 py-3 text-xs text-[#e6edf3]">
-                    <span className="text-[#6e7681]">$ </span>
+                  <code className="mt-6 block overflow-x-auto border-t border-border py-3 text-xs text-foreground">
+                    <span className="text-muted-foreground">$ </span>
                     {step.command}
                   </code>
                 </article>
@@ -379,23 +378,22 @@ export default function Home() {
 
       <section
         id="features"
-        className="scroll-mt-20 border-y border-border bg-[#f6f8fa] px-5 py-20 sm:px-8 sm:py-28"
+        className="scroll-mt-20 border-y border-border bg-white px-5 py-20 sm:px-8 sm:py-28"
       >
         <div className="mx-auto max-w-[1120px]">
           <SectionHeading
-            eyebrow="Purpose-built for developers"
             title="Useful context. Zero data exhaust."
             body="A small Unix-style utility with enough context to be specific and enough restraint to stay truthful."
           />
-          <div className="mt-12 grid gap-px overflow-hidden rounded-xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-12 grid border-y border-border sm:grid-cols-2 lg:grid-cols-3">
             {features.map((feature) => {
               const Icon = feature.icon;
               return (
                 <article
                   key={feature.title}
-                  className="bg-background p-7 sm:p-8"
+                  className="border-b border-border p-7 sm:border-r sm:p-8 lg:[&:nth-child(3n)]:border-r-0"
                 >
-                  <span className="mb-8 grid size-10 place-items-center rounded-md border border-border bg-muted">
+                  <span className="mb-8 grid size-10 place-items-center rounded-md border border-border">
                     <Icon className="size-4" />
                   </span>
                   <h3 className="font-semibold">{feature.title}</h3>
@@ -412,9 +410,6 @@ export default function Home() {
       <section className="px-5 py-20 sm:px-8 sm:py-28">
         <div className="mx-auto grid max-w-[1120px] items-center gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
           <div>
-            <p className="mb-4 font-mono text-xs font-semibold uppercase tracking-[0.14em] text-[#1a7f37]">
-              The heuristic engine
-            </p>
             <h2 className="text-balance text-4xl font-semibold tracking-[-0.045em] sm:text-5xl">
               No black box.
               <br />
@@ -433,50 +428,52 @@ export default function Home() {
                 'Branch and repository style hints',
               ].map((item) => (
                 <li key={item} className="flex items-center gap-3">
-                  <Check className="size-4 text-[#1a7f37]" />
+                  <Check className="size-4 text-foreground" />
                   {item}
                 </li>
               ))}
             </ul>
           </div>
-          <div className="overflow-hidden rounded-xl border border-[#30363d] bg-[#0d1117] text-xs text-[#8b949e] shadow-xl">
-            <div className="flex h-11 items-center gap-2 border-b border-[#30363d] bg-[#161b22] px-4">
+          <div className="overflow-hidden rounded-xl border border-border bg-white text-xs text-muted-foreground shadow-[0_20px_60px_rgba(31,35,40,0.08)]">
+            <div className="flex h-11 items-center gap-2 border-b border-border px-4">
               <FileDiff className="size-4" />
               <span>staged.diff</span>
-              <span className="ml-auto rounded-full bg-[#238636]/20 px-2 py-0.5 text-[10px] text-[#3fb950]">
-                analyzed locally
-              </span>
+              <span className="ml-auto text-[10px]">analyzed locally</span>
             </div>
             <div className="grid sm:grid-cols-[1fr_170px]">
               <pre className="overflow-x-auto p-5 font-mono leading-6 sm:p-6">
                 <code>
-                  <span className="text-[#8b949e]">@@ src/auth/session.ts</span>
+                  <span className="text-muted-foreground">
+                    @@ src/auth/session.ts
+                  </span>
                   {'\n'}
-                  <span className="text-[#ff7b72]">- return session.user</span>
+                  <span className="text-foreground">- return session.user</span>
                   {'\n'}
-                  <span className="text-[#3fb950]">
+                  <span className="font-semibold text-foreground">
                     + if (!session?.user) return null
                   </span>
                   {'\n'}
-                  <span className="text-[#3fb950]">+ return session.user</span>
+                  <span className="font-semibold text-foreground">
+                    + return session.user
+                  </span>
                   {'\n\n'}
-                  <span className="text-[#8b949e]">signals</span>
+                  <span className="text-muted-foreground">signals</span>
                   {'\n'}
-                  <span className="text-[#d2a8ff]">scope</span> auth{`\n`}
-                  <span className="text-[#d2a8ff]">identifier</span> session
+                  <span className="text-foreground">scope</span> auth{`\n`}
+                  <span className="text-foreground">identifier</span> session
                   user{`\n`}
-                  <span className="text-[#d2a8ff]">pattern</span> null guard
+                  <span className="text-foreground">pattern</span> null guard
                 </code>
               </pre>
-              <div className="border-t border-[#30363d] bg-[#161b22]/60 p-5 sm:border-l sm:border-t-0">
-                <p className="font-semibold text-[#e6edf3]">Type scores</p>
+              <div className="border-t border-border p-5 sm:border-l sm:border-t-0">
+                <p className="font-semibold text-foreground">Type scores</p>
                 <Score label="fix" value="88" width="88%" />
                 <Score label="feat" value="31" width="31%" />
                 <Score label="refactor" value="24" width="24%" />
-                <p className="mt-6 border-t border-[#30363d] pt-4 text-[11px] leading-5">
+                <p className="mt-6 border-t border-border pt-4 text-[11px] leading-5">
                   Result
                   <br />
-                  <span className="text-[#3fb950]">
+                  <span className="font-semibold text-foreground">
                     fix(auth): handle missing session user
                   </span>
                 </p>
@@ -486,42 +483,9 @@ export default function Home() {
         </div>
       </section>
 
-      <section
-        id="install"
-        className="scroll-mt-20 border-y border-border bg-[#0d1117] px-5 py-20 text-[#e6edf3] sm:px-8 sm:py-28"
-      >
-        <div className="mx-auto max-w-4xl text-center">
-          <span className="mx-auto grid size-12 place-items-center rounded-full border border-[#30363d] bg-[#161b22]">
-            <TerminalSquare className="size-5" />
-          </span>
-          <h2 className="mt-6 text-balance text-4xl font-semibold tracking-[-0.045em] sm:text-6xl">
-            Install once. Hint forever.
-          </h2>
-          <p className="mx-auto mt-5 max-w-xl text-base leading-7 text-[#8b949e]">
-            GitHint requires Node.js 20 or newer. The npm package installs the{' '}
-            <code className="text-[#e6edf3]">ghint</code> command globally.
-          </p>
-          <InstallCommand />
-          <div className="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-[#8b949e]">
-            <span className="flex items-center gap-2">
-              <LockKeyhole className="size-3.5" /> MIT licensed
-            </span>
-            <span className="flex items-center gap-2">
-              <WifiOff className="size-3.5" /> Offline-ready
-            </span>
-            <span className="flex items-center gap-2">
-              <KeyRound className="size-3.5" /> No keys
-            </span>
-          </div>
-        </div>
-      </section>
-
       <section id="faq" className="scroll-mt-20 px-5 py-20 sm:px-8 sm:py-28">
         <div className="mx-auto grid max-w-[1120px] gap-12 lg:grid-cols-[0.7fr_1.3fr]">
           <div>
-            <p className="mb-4 font-mono text-xs font-semibold uppercase tracking-[0.14em] text-[#1a7f37]">
-              Questions, answered
-            </p>
             <h2 className="text-4xl font-semibold tracking-[-0.045em] sm:text-5xl">
               The short version.
             </h2>
@@ -550,10 +514,10 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="border-t border-border bg-[#f6f8fa] px-5 py-10 sm:px-8">
+      <footer className="border-t border-border bg-white px-5 py-10 sm:px-8">
         <div className="mx-auto flex max-w-[1120px] flex-col gap-7 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-center gap-2.5 font-semibold">
-            <span className="grid size-8 place-items-center rounded-full bg-foreground text-background">
+            <span className="grid size-8 place-items-center rounded-full border border-border text-foreground">
               <GitBranch className="size-4" />
             </span>
             GitHint
@@ -582,20 +546,9 @@ export default function Home() {
   );
 }
 
-function SectionHeading({
-  eyebrow,
-  title,
-  body,
-}: {
-  eyebrow: string;
-  title: string;
-  body: string;
-}) {
+function SectionHeading({ title, body }: { title: string; body: string }) {
   return (
     <div className="max-w-2xl">
-      <p className="mb-4 font-mono text-xs font-semibold uppercase tracking-[0.14em] text-[#1a7f37]">
-        {eyebrow}
-      </p>
       <h2 className="text-balance text-4xl font-semibold tracking-[-0.045em] sm:text-5xl">
         {title}
       </h2>
@@ -619,11 +572,8 @@ function Score({
         <span>{label}</span>
         <span>{value}</span>
       </div>
-      <div className="h-1 overflow-hidden rounded-full bg-[#30363d]">
-        <span
-          className="block h-full rounded-full bg-[#2da44e]"
-          style={{ width }}
-        />
+      <div className="h-1 overflow-hidden border-t border-border">
+        <span className="block border-t border-foreground" style={{ width }} />
       </div>
     </div>
   );

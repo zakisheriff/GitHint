@@ -17,15 +17,16 @@ export function InstallCommand() {
   }
 
   return (
-    <div className="mx-auto mt-9 flex max-w-xl items-center gap-3 rounded-lg border border-[#30363d] bg-[#161b22] p-2 pl-4 text-left shadow-2xl">
-      <span className="font-mono text-sm text-[#6e7681]">$</span>
-      <code className="min-w-0 flex-1 overflow-x-auto whitespace-nowrap font-mono text-sm text-[#e6edf3]">
+    <div className="mx-auto mt-6 flex max-w-xl items-center gap-3 rounded-lg border border-border bg-white p-2 pl-4 text-left">
+      <span className="font-mono text-sm text-muted-foreground">$</span>
+      <code className="min-w-0 flex-1 overflow-x-auto whitespace-nowrap font-mono text-sm text-foreground">
         {command}
       </code>
       <Button
+        variant="outline"
         onClick={copyCommand}
         aria-label="Copy installation command"
-        className="h-9 bg-[#238636] px-3 text-white hover:bg-[#2ea043]"
+        className="h-9 border border-border bg-white px-3 text-foreground hover:border-foreground hover:bg-white"
       >
         {copied ? (
           <>
